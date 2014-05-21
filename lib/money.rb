@@ -9,6 +9,10 @@ class Money
     Money.new(amount + other_money.amount)
   end
 
+  def /(other_money)
+    amount / other_money.amount
+  end
+
   def ==(other_money)
     amount == other_money.amount
   end
