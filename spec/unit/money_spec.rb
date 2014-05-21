@@ -13,5 +13,14 @@ describe Money do
     it "can be created from a float" do
       10.00.dollars.should == Money.new(10.00)
     end
+
+    it "can be created from a numeric" do
+      10.dollars.should == Money.new(10.00)
+    end
+
+    it "can create a single dollar" do
+      1.00.dollar.should == Money.new(1.00)
+      1.dollar.should == Money.new(1.00)
+    end
   end
 end
