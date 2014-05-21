@@ -4,4 +4,5 @@ Bundler.require
 
 require 'money'
 require 'float'
+require 'employee'
 
