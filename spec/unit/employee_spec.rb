@@ -18,7 +18,7 @@ describe Employee do
         end
 
         it "computes the value of the grant after 6 months" do
-          sut.value_of_unvested_units_at(10.dollars).should == 800_000.dollars
+          sut.value_of(UnvestedUnits.new, 10.dollars).should == 800_000.dollars
         end
       end
 
@@ -32,7 +32,7 @@ describe Employee do
         end
 
         it "computes the correct value of unvested units" do
-          sut.value_of_unvested_units_at(10.dollars).should == 600_000.dollars
+          sut.value_of(UnvestedUnits.new, 10.dollars).should == 600_000.dollars
         end
       end
     end
@@ -51,7 +51,7 @@ describe Employee do
       end
 
       it "computes the values of vested units after one vesting period" do
-        sut.value_of_vested_units_at(10.dollars).should == 200_000.dollars
+        sut.value_of(VestedUnits.new, 10.dollars).should == 200_000.dollars
       end
     end
   end

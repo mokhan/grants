@@ -7,15 +7,9 @@ class Employee
     @grants.push(Grant.new(value_of_grant, share_price))
   end
 
-  def value_of_unvested_units_at(price)
+  def value_of(type_of_units, price)
     @grants.inject(0.00.dollars) do |memo, grant|
-      memo + grant.value_of_unvested_units_at(price)
-    end
-  end
-
-  def value_of_vested_units_at(price)
-    @grants.inject(0.00.dollars) do |memo, grant|
-      memo + grant.value_of_vested_units_at(price)
+      memo + type_of_units.from(grant, price)
     end
   end
 
