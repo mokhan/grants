@@ -1,4 +1,8 @@
 class Unit
+  def initialize
+    @vested = false
+  end
+
   def *(price)
     price
   end

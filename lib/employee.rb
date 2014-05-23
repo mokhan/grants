@@ -38,13 +38,9 @@ class Grant
 
   def vest_at(price, portion)
     number_of_units_to_vest = portion.to_f * @units.count
-    units_to_vest = @units.take(number_of_units_to_vest)
-    units_to_vest.each do |unit|
+    @units.take(number_of_units_to_vest).each do |unit|
       unit.vest_at(price)
     end
-    puts unvested_units.count
-    puts vested_units.count
-    puts @units.count
   end
 
   private
