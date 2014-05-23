@@ -12,10 +12,11 @@ describe Employee do
 
     it "computes the value of the grant after one year" do
       today = Clock.today
+      one_year_from_now = today + 365
       sut.issue_grant(80_000, 1.00)
-      Clock.stub(:now).and_return(1.year.from_now)
-      sut.grant_for(today).vest_at(10.dollars)
-      sut.unvested_units.value_at(10.dollars).should == 200_000
+      Clock.stub(:now).and_return(one_year_from_now)
+      sut.grant_for(today).vest_at(10.dollars, 1.0/4.0)
+      sut.value_of_unvested_units_at(10.dollars).should == 200_000.dollars
     end
   end
 end
