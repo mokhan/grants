@@ -19,12 +19,14 @@ end
 
 class UnvestedUnits
   def from(grant, at_price)
-    grant.value_of_unvested_units_at(at_price)
+    unvested_units = grant.find_all { |unit| unit.vested? == false }
+    grant.value_of(unvested_units, at_price)
   end
 end
 
 class VestedUnits
   def from(grant, at_price)
-    grant.value_of_vested_units_at(at_price)
+    vested_units = grant.find_all { |unit| unit.vested? }
+    grant.value_of(vested_units, at_price)
   end
 end
